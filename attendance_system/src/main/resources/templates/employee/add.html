@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="admin-container d-flex">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo text-center">
+                <i class="fas fa-user-cog"></i>
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/employees/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="/employees"><i class="fas fa-users"></i> Manage Employee</a></li>
+                <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content flex-grow-1" id="mainContent">
+            <header class="topbar d-flex justify-content-between align-items-center p-3">
+                <button class="toggle-btn" id="toggleBtn"><i class="fas fa-bars"></i></button>
+                <span>Admin Panel</span>
+                <a href="#" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </header>
+
+            <!-- Form Section -->
+            <div class="container mt-5">
+                <h2 th:text="${employee.id != null ? 'Edit Employee' : 'Add Employee'}"></h2>
+                <form th:action="@{/employees/save}" th:object="${employee}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    
+                    <!-- Employee Details -->
+                    <div class="row">
+                    
+                    
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" th:field="*{name}" class="form-control" required/>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" th:field="*{username}" class="form-control" required/>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                       
+                       
+                       <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" th:field="*{email}" class="form-control" required/>
+                            </div>
+                        </div>
+                        
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" th:field="*{password}" class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="designation">Designation</label>
+                                <input type="text" id="designation" th:field="*{designation}" class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" th:field="*{location}" class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+
+               
+
+                    <!-- Bank Information -->
+                    <h3 class="mt-4">Bank Information</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="payMode">Pay Mode</label>
+                                <input type="text" id="payMode" th:field="*{payMode}" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bankName">Bank Name</label>
+                                <input type="text" id="bankName" th:field="*{bankName}" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bankAccountNumber">Bank Account Number</label>
+                                <input type="text" id="bankAccountNumber" th:field="*{bankAccountNumber}" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ifscCode">IFSC Code</label>
+                                <input type="text" id="ifscCode" th:field="*{ifscCode}" class="form-control"/>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="grossSalary">Gross Salary</label>
+                                <input type="text" id="grossSalary" th:field="*{grossSalary}" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <button type="submit" class="btn btn-success mt-3">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sidebar Toggle Functionality
+        const toggleBtn = document.getElementById('toggleBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+    </script>
+</body>
+</html>
