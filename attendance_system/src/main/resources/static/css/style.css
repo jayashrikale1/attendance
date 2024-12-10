@@ -166,4 +166,41 @@
         display: block; /* Show on mobile and tablet */
     }
 }
-        
+.notifications-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.notifications-table th,
+.notifications-table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.notifications-table thead {
+    background-color: #6c63ff;
+    color: #ffffff;
+}
+
+.notifications-table tr:hover {
+    background-color: #f4f4f4;
+}
+
+.btn-primary {
+    background-color: #6c63ff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #5848cc;
+}
+
+.add-notification-btn {
+    margin: 20px 0;
+    text-align: right;
+}
+
