@@ -48,6 +48,8 @@ public class EmployeeService {
         int number = random.nextInt(100000, 999999); // Generates a random 6-digit number
         return prefix + number;
     }
-   
+    public Employee getEmployeeByEmail(String email) {
+        return employeeRepository.findByEmail(email);
+    }
 
 }
